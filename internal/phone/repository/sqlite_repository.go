@@ -18,17 +18,17 @@ func NewSqlitePhoneRepository(db *gorm.DB) phone.Repository {
 	}
 }
 
-func (s *SqlitePhoneRepository) Save(c context.Context, phone model.Phone) (*model.Phone, error) {
+func (s *SqlitePhoneRepository) Save(c context.Context, phone model.Device) (*model.Device, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (s *SqlitePhoneRepository) FindByName(c context.Context, name string) (*model.Phone, error) {
+func (s *SqlitePhoneRepository) FindByName(c context.Context, name string) (*model.Device, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (s *SqlitePhoneRepository) Update(c context.Context, phone model.Phone) (*model.Phone, error) {
+func (s *SqlitePhoneRepository) Update(c context.Context, phone model.Device) (*model.Device, error) {
 	//TODO implement me
 	panic("implement me")
 }

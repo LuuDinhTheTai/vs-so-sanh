@@ -9,7 +9,7 @@ import (
 	. "maragu.dev/gomponents/html"
 )
 
-func ComparePage(products []model2.Phone, allSpecKeys []string) Node {
+func ComparePage(products []model2.Device, allSpecKeys []string) Node {
 	if len(products) == 0 {
 		return shared.Page("So sánh",
 			Div(Class("text-center py-20"),
@@ -26,11 +26,11 @@ func ComparePage(products []model2.Phone, allSpecKeys []string) Node {
 				THead(
 					Tr(
 						Th(Class("p-4 border-b-2 border-gray-100 min-w-[200px]"), Text("Tiêu chí")),
-						Maps(products, func(p model2.Phone) Node {
+						Maps(products, func(p model2.Device) Node {
 							return Th(Class("p-4 border-b-2 border-gray-100 w-1/4 align-bottom"),
 								//Img(Src(p.Image), Class("w-24 h-24 object-contain mx-auto mb-4")),
-								Div(Class("text-lg font-bold text-center"), Text(p.BrandName)),
-								Div(Class("text-indigo-600 text-center font-normal"), Text(fmt.Sprintf("%v đ", p.BrandName))),
+								Div(Class("text-lg font-bold text-center"), Text(p.ModelName)),
+								Div(Class("text-indigo-600 text-center font-normal"), Text(fmt.Sprintf("%v đ", p.ModelName))),
 							)
 						}),
 					),
@@ -40,7 +40,7 @@ func ComparePage(products []model2.Phone, allSpecKeys []string) Node {
 					Maps(allSpecKeys, func(key string) Node {
 						return Tr(Class("hover:bg-gray-50 transition"),
 							Td(Class("p-4 border-b border-gray-100 font-medium text-gray-500"), Text(key)),
-							Maps(products, func(p model2.Phone) Node {
+							Maps(products, func(p model2.Device) Node {
 								// Giả sử bạn có hàm lấy value từ spec JSON, hoặc xử lý ở controller
 								// Ở đây tôi giả định Product có method GetSpec(key)
 								val := "N/A" // Placeholder
@@ -51,9 +51,9 @@ func ComparePage(products []model2.Phone, allSpecKeys []string) Node {
 					// Nút hành động cuối bảng
 					Tr(
 						Td(Class("p-4"), Text("")),
-						Maps(products, func(p model2.Phone) Node {
+						Maps(products, func(p model2.Device) Node {
 							return Td(Class("p-4 text-center"),
-								A(Href(fmt.Sprintf("/product/%d", p.BrandName)), Class("text-indigo-600 hover:underline text-sm"), Text("Xem chi tiết")),
+								A(Href(fmt.Sprintf("/product/%d", p.ModelName)), Class("text-indigo-600 hover:underline text-sm"), Text("Xem chi tiết")),
 							)
 						}),
 					),

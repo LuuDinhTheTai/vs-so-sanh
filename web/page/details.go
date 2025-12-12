@@ -9,8 +9,8 @@ import (
 	. "maragu.dev/gomponents/html"
 )
 
-func DetailsPage(p model2.Phone, specs map[string]string) Node {
-	return shared.Page(p.BrandName,
+func DetailsPage(p model2.Device, specs map[string]string) Node {
+	return shared.Page(p.ModelName,
 		Div(Class("max-w-5xl mx-auto"),
 			// Breadcrumb
 			A(Href("/"), Class("text-indigo-600 hover:underline mb-6 inline-block"), Text("← Quay lại danh sách")),
@@ -22,8 +22,8 @@ func DetailsPage(p model2.Phone, specs map[string]string) Node {
 
 					// Thông tin bên phải
 					Div(Class("md:w-1/2 p-8 md:p-12"),
-						H1(Class("text-3xl font-bold text-gray-900 mb-2"), Text(p.BrandName)),
-						P(Class("text-2xl text-indigo-600 font-bold mb-6"), Text(fmt.Sprintf("%v đ", p.BrandName))),
+						H1(Class("text-3xl font-bold text-gray-900 mb-2"), Text(p.ModelName)),
+						P(Class("text-2xl text-indigo-600 font-bold mb-6"), Text(fmt.Sprintf("%v đ", p.ModelName))),
 
 						H3(Class("text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4"), Text("Thông số kỹ thuật")),
 

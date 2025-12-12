@@ -1,7 +1,11 @@
 package model
 
-type Phone struct {
-	BrandName      string
+type Brand struct {
+	Name    string
+	Devices []Device
+}
+
+type Device struct {
 	ModelName      string
 	ImageUrl       string
 	Specifications Specifications

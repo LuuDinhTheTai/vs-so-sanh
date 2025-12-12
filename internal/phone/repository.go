@@ -6,7 +6,7 @@ import (
 )
 
 type Repository interface {
-	Save(c context.Context, phone model.Phone) (*model.Phone, error)
-	FindByName(c context.Context, name string) (*model.Phone, error)
-	Update(c context.Context, phone model.Phone) (*model.Phone, error)
+	Save(c context.Context, phone model.Device) (*model.Device, error)
+	FindByName(c context.Context, name string) (*model.Device, error)
+	Update(c context.Context, phone model.Device) (*model.Device, error)
 }

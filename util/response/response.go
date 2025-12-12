@@ -10,10 +10,10 @@ func IndexPage(ctx *gin.Context) {
 
 }
 
-func PhoneDetailsPage(ctx *gin.Context, phone *model.Phone) {
+func PhoneDetailsPage(ctx *gin.Context, phone *model.Device) {
 
 }
 
-func ComparePage(ctx *gin.Context, phone1 *model.Phone, phone2 *model.Phone) {
+func ComparePage(ctx *gin.Context, phone1 *model.Device, phone2 *model.Device) {
 
 }
