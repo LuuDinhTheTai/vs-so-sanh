@@ -2,18 +2,21 @@ package server
 
 import (
 	"github.com/gin-gonic/gin"
+	"go.mongodb.org/mongo-driver/v2/mongo"
 	"gorm.io/gorm"
 )
 
 type Server struct {
-	r  *gin.Engine
-	db *gorm.DB
+	r      *gin.Engine
+	db     *gorm.DB
+	client *mongo.Client
 }
 
-func NewServer(r *gin.Engine, db *gorm.DB) *Server {
+func NewServer(r *gin.Engine, db *gorm.DB, client *mongo.Client) *Server {
 	return &Server{
-		r:  r,
-		db: db,
+		r:      r,
+		db:     db,
+		client: client,
 	}
 }
 

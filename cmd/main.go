@@ -26,7 +26,7 @@ func main() {
 
 	r := gin.Default()
 
-	server := server2.NewServer(r, nil)
+	server := server2.NewServer(r, nil, client)
 
 	slog.Info("Server start at http://" + cfg.Server.Host + ":" + cfg.Server.Port)
 	err := server.Run()

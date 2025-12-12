@@ -1,10 +1,5 @@
 package model
 
-type Brand struct {
-	Name    string
-	Devices []Device
-}
-
 type Device struct {
 	ModelName      string
 	ImageUrl       string

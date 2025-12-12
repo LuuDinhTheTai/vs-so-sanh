@@ -2,23 +2,34 @@ package page
 
 import (
 	"fmt"
-	_ "fmt"
+	"log/slog"
+	"vs-so-sanh/internal/brand"
+	"vs-so-sanh/internal/brand/delivery/dto"
 	"vs-so-sanh/web/page/shared"
 
 	. "maragu.dev/gomponents"
 	. "maragu.dev/gomponents/html"
 )
 
-func HomePage() Node {
+func HomePage(brandUseCase brand.UseCase) Node {
+	brands, err := brandUseCase.List()
+	if err != nil {
+		slog.Error("Error fetching top 10 brands: ", err)
+		brands = []dto.BrandResponse{
+			{Name: "Brand 1"},
+			{Name: "Brand 2"},
+		}
+	}
+
 	return shared.Page(
 		"Vs-SoSanh",
 
 		Div(Class("grid grid-cols-1 lg:grid-cols-10 gap-6"),
 
 			Aside(Class("lg:col-span-3 space-y-6"),
-				PhoneFinderWidget(),
+				PhoneFinderWidget(brands),
 				Top10Widget(),
-				LatestDevicesWidget(),
+				//LatestDevicesWidget(),
 			),
 
 			Main(Class("lg:col-span-7 space-y-6"),
@@ -32,16 +43,14 @@ func HomePage() Node {
 
 // --- COMPONENTS CON (UI WIDGETS) ---
 
-func PhoneFinderWidget() Node {
-	brands := []string{"Samsung", "Apple", "Huawei", "Nokia", "Sony", "LG", "HTC", "Motorola", "Lenovo", "Xiaomi", "Google", "Honor", "Oppo", "Realme", "OnePlus", "Vivo", "Meizu", "Asus", "Tecno", "Infinix"}
-
+func PhoneFinderWidget(brands []dto.BrandResponse) Node {
 	return Div(Class("bg-white p-4 shadow-sm rounded-lg border border-gray-200"),
 		H3(Class("text-lg font-bold text-gray-700 mb-3 border-b pb-2 uppercase"),
 			I(Class("fas fa-search mr-2")), Text("Phone Finder"),
 		),
 		Div(Class("grid grid-cols-2 gap-2 text-sm"),
-			Maps(brands, func(b string) Node {
-				return A(Href("#"), Class("text-indigo-600 hover:underline hover:text-indigo-800"), Text(b))
+			Maps(brands, func(b dto.BrandResponse) Node {
+				return A(Href("#"), Class("text-indigo-600 hover:underline hover:text-indigo-800"), Text(b.Name))
 			}),
 		),
 		Div(Class("mt-4 pt-2 border-t text-center"),
