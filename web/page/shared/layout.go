@@ -12,19 +12,20 @@ func Page(title string, children ...Node) Node {
 		Language: "en",
 		Head: []Node{
 			Script(Src("https://cdn.tailwindcss.com?plugins=typography")),
+			// 1. Thêm HTMX
+			Script(Src("https://unpkg.com/htmx.org@1.9.10")),
 		},
-		Body: []Node{Class("bg-gradient-to-b from-white to-indigo-100 bg-no-repeat"),
-			Div(Class("min-h-screen flex flex-col justify-between"),
-				PageHeader(),
-				Div(Class("grow"),
-					Container(true,
-						Div(Class("prose prose-lg prose-indigo"),
-							Group(children),
-						),
-					),
+		Body: []Node{
+			Class("bg-gray-50 min-h-screen flex flex-col"), // Sửa lại background cho sáng sủa hơn
+			PageHeader(),
+			Div(Class("grow py-8"),
+				Container(false, // Tắt padding mặc định để tự control
+					Group(children),
 				),
-				PageFooter(),
 			),
+			PageFooter(),
+			// 2. Nơi chứa thanh so sánh (Floating Bar) sẽ được HTMX cập nhật
+			Div(ID("compare-tray")),
 		},
 	})
 }
