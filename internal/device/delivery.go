@@ -2,9 +2,8 @@ package device
 
 import (
 	"github.com/gin-gonic/gin"
-	"maragu.dev/gomponents"
 )
 
 type Handler interface {
-	HomePage(ctx *gin.Context) (gomponents.Node, error)
+	HomePage(ctx *gin.Context)
 }

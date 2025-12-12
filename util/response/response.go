@@ -1,19 +1,19 @@
 package response
 
 import (
-	"vs-so-sanh/internal/model"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"maragu.dev/gomponents"
 )
 
-func IndexPage(ctx *gin.Context) {
+func HTML(ctx *gin.Context, node gomponents.Node) {
+	ctx.Header("Content-Type", "text/html; charset=utf-8")
 
-}
+	ctx.Status(http.StatusOK)
 
-func PhoneDetailsPage(ctx *gin.Context, phone *model.Device) {
-
-}
-
-func ComparePage(ctx *gin.Context, phone1 *model.Device, phone2 *model.Device) {
-
+	err := node.Render(ctx.Writer)
+	if err != nil {
+		ctx.AbortWithError(http.StatusInternalServerError, err)
+	}
 }
