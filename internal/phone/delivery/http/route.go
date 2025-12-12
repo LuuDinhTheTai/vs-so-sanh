@@ -9,7 +9,7 @@ import (
 )
 
 func MapPhoneRoutes(r *gin.Engine, handler phone.Handler) {
-	r.GET("/homepage", adapt(handler.HomePage))
+	r.GET("/", adapt(handler.HomePage))
 }
 
 func adapt(h func(ctx *gin.Context) (gomponents.Node, error)) gin.HandlerFunc {

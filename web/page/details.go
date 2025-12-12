@@ -10,7 +10,7 @@ import (
 )
 
 func DetailsPage(p model2.Phone, specs map[string]string) Node {
-	return shared.Page(p.Brand,
+	return shared.Page(p.BrandName,
 		Div(Class("max-w-5xl mx-auto"),
 			// Breadcrumb
 			A(Href("/"), Class("text-indigo-600 hover:underline mb-6 inline-block"), Text("← Quay lại danh sách")),
@@ -22,14 +22,14 @@ func DetailsPage(p model2.Phone, specs map[string]string) Node {
 
 					// Thông tin bên phải
 					Div(Class("md:w-1/2 p-8 md:p-12"),
-						H1(Class("text-3xl font-bold text-gray-900 mb-2"), Text(p.Brand)),
-						P(Class("text-2xl text-indigo-600 font-bold mb-6"), Text(fmt.Sprintf("%v đ", p.Brand))),
+						H1(Class("text-3xl font-bold text-gray-900 mb-2"), Text(p.BrandName)),
+						P(Class("text-2xl text-indigo-600 font-bold mb-6"), Text(fmt.Sprintf("%v đ", p.BrandName))),
 
 						H3(Class("text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4"), Text("Thông số kỹ thuật")),
 
 						// Bảng thông số mini
 						Div(Class("space-y-3"),
-							Map(getKeys(specs), func(k string) Node {
+							Maps(getKeys(specs), func(k string) Node {
 								return Div(Class("flex justify-between border-b border-gray-100 pb-2"),
 									Span(Class("text-gray-600"), Text(k)),
 									Span(Class("font-medium text-gray-900"), Text(specs[k])),

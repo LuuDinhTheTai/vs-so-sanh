@@ -1,25 +1,31 @@
 package model
 
 type Phone struct {
-	Brand    string // Samsung
-	Model    string // Galaxy Z Tri-Fold (Giả định dựa trên specs)
-	Network  Network
-	Launch   Launch
-	Body     Body
-	Display  Display
-	Platform Platform
-	Memory   Memory
-	Camera   Camera
-	Sound    Sound
-	Comms    Comms
-	Features Features
-	Battery  Battery
-	Misc     Misc
+	BrandName      string
+	ModelName      string
+	ImageUrl       string
+	Specifications Specifications
+}
+
+type Specifications struct {
+	Network      Network
+	Launch       Launch
+	Body         Body
+	Display      Display
+	Platform     Platform
+	Memory       Memory
+	MainCamera   MainCamera
+	SelfieCamera SelfieCamera
+	Sound        Sound
+	Comms        Comms
+	Features     Features
+	Battery      Battery
+	Misc         Misc
 }
 
 type Network struct {
 	Technology string
-	Bands2G    string // Tên biến không được bắt đầu bằng số
+	Bands2G    string
 	Bands3G    string
 	Bands4G    string
 	Bands5G    string
@@ -37,7 +43,7 @@ type Body struct {
 	Weight             string
 	Build              string
 	SIM                string
-	IPRating           string // IP48
+	IPRating           string
 }
 
 type Display struct {
@@ -61,18 +67,20 @@ type Memory struct {
 	Internal string
 }
 
-type Camera struct {
-	MainModules    string
-	MainFeatures   string
-	MainVideo      string
-	SelfieModules  string // Bao gồm cả camera bìa (cover camera)
-	SelfieFeatures string
-	SelfieVideo    string
+type MainCamera struct {
+	Single   string
+	Features string
+	Video    string
+}
+
+type SelfieCamera struct {
+	Single string
+	Video  string
 }
 
 type Sound struct {
 	Loudspeaker string
-	Jack35mm    string // Dùng string để lưu "No" hoặc chi tiết khác
+	Jack35mm    string
 }
 
 type Comms struct {
@@ -86,7 +94,7 @@ type Comms struct {
 
 type Features struct {
 	Sensors string
-	Other   string // DeX support
+	Other   string
 }
 
 type Battery struct {
