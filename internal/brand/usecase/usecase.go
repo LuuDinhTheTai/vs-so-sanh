@@ -16,9 +16,22 @@ func NewBrandUseCase(repo brand.Repository) brand.UseCase {
 	}
 }
 
-func (b *BrandUseCase) FindTop10() ([]dto.BrandResponse, error) {
-	//TODO implement me
-	panic("implement me")
+func (b *BrandUseCase) FindTop20() ([]dto.BrandResponse, error) {
+	brands, err := b.BrandRepository.FindTop20()
+	if err != nil {
+		return nil, err
+	}
+
+	var brandResponses []dto.BrandResponse
+	for _, br := range brands {
+		brandResponses = append(brandResponses, dto.BrandResponse{
+			Name: br.Name,
+		})
+	}
+
+	slog.Info("brand response: ", brandResponses)
+
+	return brandResponses, nil
 }
 
 func (b *BrandUseCase) List() ([]dto.BrandResponse, error) {

@@ -12,7 +12,7 @@ import (
 )
 
 func HomePage(brandUseCase brand.UseCase) Node {
-	brands, err := brandUseCase.List()
+	brands, err := brandUseCase.FindTop20()
 	if err != nil {
 		slog.Error("Error fetching top 10 brands: ", err)
 		brands = []dto.BrandResponse{

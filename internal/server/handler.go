@@ -10,7 +10,7 @@ import (
 
 func (s *Server) MapHandlers() error {
 	// Init repository
-	brandRepository := repository2.NewMongoDbBrandRepository(s.client)
+	brandRepository := repository2.NewMongoDbBrandRepository(s.cfg, s.client)
 	phoneRepository := repository.NewSqlitePhoneRepository(s.db)
 
 	// Init usecase

@@ -5,6 +5,6 @@ import (
 )
 
 type UseCase interface {
-	FindTop10() ([]dto.BrandResponse, error)
+	FindTop20() ([]dto.BrandResponse, error)
 	List() ([]dto.BrandResponse, error)
 }
