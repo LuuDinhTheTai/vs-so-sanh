@@ -2,13 +2,13 @@ package http
 
 import (
 	"net/http"
-	"vs-so-sanh/internal/phone"
+	"vs-so-sanh/internal/device"
 
 	"github.com/gin-gonic/gin"
 	"maragu.dev/gomponents"
 )
 
-func MapPhoneRoutes(r *gin.Engine, handler phone.Handler) {
+func MapDeviceRoutes(r *gin.Engine, handler device.Handler) {
 	r.GET("/", adapt(handler.HomePage))
 }
 

@@ -5,13 +5,15 @@ import (
 	"log/slog"
 	"vs-so-sanh/internal/brand"
 	"vs-so-sanh/internal/brand/delivery/dto"
+	"vs-so-sanh/internal/device"
+	"vs-so-sanh/internal/model"
 	"vs-so-sanh/web/page/shared"
 
 	. "maragu.dev/gomponents"
 	. "maragu.dev/gomponents/html"
 )
 
-func HomePage(brandUseCase brand.UseCase) Node {
+func HomePage(brandUseCase brand.UseCase, deviceUseCase device.UseCase) Node {
 	brands, err := brandUseCase.FindTop20()
 	if err != nil {
 		slog.Error("Error fetching top 10 brands: ", err)
@@ -19,6 +21,12 @@ func HomePage(brandUseCase brand.UseCase) Node {
 			{Name: "Brand 1"},
 			{Name: "Brand 2"},
 		}
+	}
+
+	devices, err := deviceUseCase.FindTop20()
+	if err != nil {
+		slog.Error("Error fetching top 10 devices: ", err)
+		devices = []model.Device{}
 	}
 
 	return shared.Page(
@@ -35,7 +43,7 @@ func HomePage(brandUseCase brand.UseCase) Node {
 			Main(Class("lg:col-span-7 space-y-6"),
 				SearchBar(),
 				//FeaturedSection(),
-				HotPhoneSection(),
+				HotDeviceSection(devices),
 			),
 		),
 	)
@@ -162,21 +170,21 @@ func FeaturedSmallCard(title, imgUrl string) Node {
 	)
 }
 
-func HotPhoneSection() Node {
-	newsItems := []struct{ Title, Desc string }{
-		{"Google Pixel 10 Pro XL vs Samsung S25 Ultra", "Cuộc chiến flagship đầu năm 2025."},
-		{"Honor X8d is official", "Pin khủng, chip 4G mới."},
-		{"Huawei Mate X7 goes international", "Sẵn sàng ra mắt toàn cầu."},
-	}
-
+func HotDeviceSection(devices []model.Device) Node {
 	return Div(Class("bg-white p-4 shadow rounded-lg"),
 		H3(Class("text-lg font-bold text-gray-800 mb-4 border-l-4 border-indigo-600 pl-3"), Text("HOT PHONE")),
 		Div(Class("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"),
-			Maps(newsItems, func(n struct{ Title, Desc string }) Node {
+			Maps(devices, func(n model.Device) Node {
 				return Div(Class("border rounded p-3 hover:shadow-md transition-shadow"),
-					Div(Class("h-32 bg-gray-200 mb-2 rounded")),
-					H4(Class("font-bold text-sm text-indigo-700 mb-1"), Text(n.Title)),
-					P(Class("text-xs text-gray-500"), Text(n.Desc)),
+					Div(Class("h-32 bg-gray-200 mb-2 rounded"),
+						Img(
+							Class("w-full h-full object-contain"),
+							Src(n.ImageUrl),
+							Alt(n.ModelName),
+						),
+					),
+					H4(Class("font-bold text-sm text-indigo-700 mb-1"), Text(n.ModelName)),
+					P(Class("text-xs text-gray-500"), Text("abc")),
 				)
 			}),
 		),

@@ -2,8 +2,8 @@ package repository
 
 import (
 	"context"
+	"vs-so-sanh/internal/device"
 	"vs-so-sanh/internal/model"
-	"vs-so-sanh/internal/phone"
 
 	"gorm.io/gorm"
 )
@@ -12,7 +12,12 @@ type SqlitePhoneRepository struct {
 	db *gorm.DB
 }
 
-func NewSqlitePhoneRepository(db *gorm.DB) phone.Repository {
+func (s *SqlitePhoneRepository) FindTop20(c context.Context) ([]model.Device, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func NewSqlitePhoneRepository(db *gorm.DB) device.Repository {
 	return &SqlitePhoneRepository{
 		db: db,
 	}

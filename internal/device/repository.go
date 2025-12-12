@@ -1,4 +1,4 @@
-package phone
+package device
 
 import (
 	"context"
@@ -8,5 +8,6 @@ import (
 type Repository interface {
 	Save(c context.Context, phone model.Device) (*model.Device, error)
 	FindByName(c context.Context, name string) (*model.Device, error)
+	FindTop20(c context.Context) ([]model.Device, error)
 	Update(c context.Context, phone model.Device) (*model.Device, error)
 }

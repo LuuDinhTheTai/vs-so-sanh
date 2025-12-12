@@ -1,9 +1,9 @@
 package model
 
 type Device struct {
-	ModelName      string
-	ImageUrl       string
-	Specifications Specifications
+	ModelName      string         `bson:"model_name"`
+	ImageUrl       string         `bson:"imageUrl"`
+	Specifications Specifications `bson:"specifications"`
 }
 
 type Specifications struct {
