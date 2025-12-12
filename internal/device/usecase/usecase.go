@@ -16,3 +16,7 @@ func NewPhoneUseCase(repository device.Repository) device.UseCase {
 func (p *DeviceUseCase) FindTop20() ([]model.Device, error) {
 	return p.repository.FindTop20(nil)
 }
+
+func (p *DeviceUseCase) FindByName(deviceName string) (*model.Device, error) {
+	return p.repository.FindByName(nil, deviceName)
+}

@@ -8,4 +8,5 @@ import (
 
 func MapDeviceRoutes(r *gin.Engine, handler device.Handler) {
 	r.GET("/", handler.HomePage)
+	r.GET("/devices/:modelName", handler.Details)
 }

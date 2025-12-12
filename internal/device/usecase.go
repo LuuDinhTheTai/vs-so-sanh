@@ -6,4 +6,5 @@ import (
 
 type UseCase interface {
 	FindTop20() ([]model.Device, error)
+	FindByName(deviceName string) (*model.Device, error)
 }

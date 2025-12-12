@@ -28,7 +28,7 @@ func (m *MongoDbBrandRepository) FindTop20() ([]model.Brand, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	collection := m.client.Database(m.cfg.Database.DBName).Collection(m.cfg.Database.CollectionName)
+	collection := m.client.Database(m.cfg.Database.DBName).Collection("brands")
 
 	opts := options.Find().
 		SetLimit(20)
@@ -51,7 +51,7 @@ func (m *MongoDbBrandRepository) FindAll() ([]model.Brand, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
-	collection := m.client.Database(m.cfg.Database.DBName).Collection(m.cfg.Database.CollectionName)
+	collection := m.client.Database(m.cfg.Database.DBName).Collection("brands")
 
 	projection := bson.D{
 		{"brand_name", 1},

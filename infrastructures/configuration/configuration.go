@@ -17,9 +17,8 @@ type ServerConfig struct {
 }
 
 type DatabaseConfig struct {
-	URI            string
-	DBName         string
-	CollectionName string
+	URI    string
+	DBName string
 }
 
 func LoadEnv() Config {
@@ -28,12 +27,17 @@ func LoadEnv() Config {
 		panic(err)
 	}
 
+	//appEnv := os.Getenv("APP_ENV")
+
+	//ginMode := os.Getenv("GIN_MODE")
+
 	host := os.Getenv("SERVER_HOST")
 	port := os.Getenv("SERVER_PORT")
 
+	//dbUser := os.Getenv("DATABASE_USER")
+	//dbPassword := os.Getenv("DATABASE_PASSWORD")
 	uri := os.Getenv("DATABASE_URI")
 	dbName := os.Getenv("DATABASE_NAME")
-	collectionName := os.Getenv("DATABASE_COLLECTION_NAME")
 
 	return Config{
 		Server: ServerConfig{
@@ -41,9 +45,8 @@ func LoadEnv() Config {
 			Port: port,
 		},
 		Database: DatabaseConfig{
-			URI:            uri,
-			DBName:         dbName,
-			CollectionName: collectionName,
+			URI:    uri,
+			DBName: dbName,
 		},
 	}
 }

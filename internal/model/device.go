@@ -23,86 +23,86 @@ type Specifications struct {
 }
 
 type Network struct {
-	Technology string
-	Bands2G    string
-	Bands3G    string
-	Bands4G    string
-	Bands5G    string
-	Speed      string
+	Technology string `bson:"Technology"`
+	Bands2G    string `bson:"2G bands"`
+	Bands3G    string `bson:"3G bands"`
+	Bands4G    string `bson:"4G bands"`
+	Bands5G    string `bson:"5G bands"`
+	Speed      string `bson:"Speed"`
 }
 
 type Launch struct {
-	Announced string
-	Status    string
+	Announced string `bson:"Announced"`
+	Status    string `bson:"Status"`
 }
 
 type Body struct {
-	DimensionsUnfolded string
-	DimensionsFolded   string
-	Weight             string
-	Build              string
-	SIM                string
-	IPRating           string
+	DimensionsUnfolded string `bson:"Dimensions Unfolded"`
+	DimensionsFolded   string `bson:"Dimensions Folded"`
+	Weight             string `bson:"Weight"`
+	Build              string `bson:"Build"`
+	SIM                string `bson:"SIM"`
+	IPRating           string `bson:"IP Rating"`
 }
 
 type Display struct {
-	MainType        string
-	MainSize        string
-	MainResolution  string
-	CoverType       string
-	CoverSize       string
-	CoverResolution string
+	MainType        string `bson:"Main Type"`
+	MainSize        string `bson:"Main Size"`
+	MainResolution  string `bson:"Main Resolution"`
+	CoverType       string `bson:"Cover Type"`
+	CoverSize       string `bson:"Cover Size"`
+	CoverResolution string `bson:"Cover Resolution"`
 }
 
 type Platform struct {
-	OS      string
-	Chipset string
-	CPU     string
-	GPU     string
+	OS      string `bson:"OS"`
+	Chipset string `bson:"Chipset"`
+	CPU     string `bson:"CPU"`
+	GPU     string `bson:"GPU"`
 }
 
 type Memory struct {
-	CardSlot string
-	Internal string
+	CardSlot string `bson:"Card Slot"`
+	Internal string `bson:"Internal"`
 }
 
 type MainCamera struct {
-	Single   string
-	Features string
-	Video    string
+	Single   string `bson:"Single"`
+	Features string `bson:"Features"`
+	Video    string `bson:"Video"`
 }
 
 type SelfieCamera struct {
-	Single string
-	Video  string
+	Single string `bson:"Single"`
+	Video  string `bson:"Video"`
 }
 
 type Sound struct {
-	Loudspeaker string
-	Jack35mm    string
+	Loudspeaker string `bson:"Loudspeaker"`
+	Jack35mm    string `bson:"Jack35Mm"`
 }
 
 type Comms struct {
-	WLAN        string
-	Bluetooth   string
-	Positioning string
-	NFC         string
-	Radio       string
-	USB         string
+	WLAN        string `bson:"WLAN"`
+	Bluetooth   string `bson:"Bluetooth"`
+	Positioning string `bson:"Positioning"`
+	NFC         string `bson:"NFC"`
+	Radio       string `bson:"Radio"`
+	USB         string `bson:"USB"`
 }
 
 type Features struct {
-	Sensors string
-	Other   string
+	Sensors string `bson:"Sensors"`
+	Other   string `bson:"Other"`
 }
 
 type Battery struct {
-	Type     string
-	Charging string
+	Type     string `bson:"Type"`
+	Charging string `bson:"Charging"`
 }
 
 type Misc struct {
-	Colors string
-	Models string
-	Price  string
+	Colors string `bson:"Colors"`
+	Models string `bson:"Models"`
+	Price  string `bson:"Price"`
 }
