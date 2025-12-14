@@ -4,6 +4,7 @@ import (
 	"log/slog"
 	"vs-so-sanh/internal/brand"
 	"vs-so-sanh/internal/device"
+	"vs-so-sanh/internal/device/delivery/dto"
 	_ "vs-so-sanh/internal/model"
 	"vs-so-sanh/util/response"
 	"vs-so-sanh/web/page"
@@ -56,11 +57,13 @@ func (p *DeviceHandler) Compare(ctx *gin.Context) {
 	device1, err := p.deviceUseCase.FindByName(ctx, device1Name)
 	if err != nil {
 		slog.Error("(handler) compare: \n", err)
+		device1 = dto.EmptyDeviceResponse
 	}
 
 	device2, err := p.deviceUseCase.FindByName(ctx, device2Name)
 	if err != nil {
 		slog.Error("(handler) compare: \n", err)
+		device2 = dto.EmptyDeviceResponse
 	}
 
 	response.HTML(ctx, page.ComparePage(device1, device2))
