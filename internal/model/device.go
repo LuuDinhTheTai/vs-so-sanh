@@ -37,21 +37,17 @@ type Launch struct {
 }
 
 type Body struct {
-	DimensionsUnfolded string `bson:"Dimensions Unfolded"`
-	DimensionsFolded   string `bson:"Dimensions Folded"`
-	Weight             string `bson:"Weight"`
-	Build              string `bson:"Build"`
-	SIM                string `bson:"SIM"`
-	IPRating           string `bson:"IP Rating"`
+	Dimensions string `bson:"Dimensions"`
+	Weight     string `bson:"Weight"`
+	Build      string `bson:"Build"`
+	SIM        string `bson:"SIM"`
+	IPRating   string `bson:"IP Rating"`
 }
 
 type Display struct {
-	MainType        string `bson:"Main Type"`
-	MainSize        string `bson:"Main Size"`
-	MainResolution  string `bson:"Main Resolution"`
-	CoverType       string `bson:"Cover Type"`
-	CoverSize       string `bson:"Cover Size"`
-	CoverResolution string `bson:"Cover Resolution"`
+	Type       string `bson:"Type"`
+	Size       string `bson:"Size"`
+	Resolution string `bson:"Resolution"`
 }
 
 type Platform struct {
@@ -67,8 +63,9 @@ type Memory struct {
 }
 
 type MainCamera struct {
-	Single   string `bson:"Single"`
+	Triple   string `bson:"Triple"`
 	Features string `bson:"Features"`
+	Single   string `bson:"Single"`
 	Video    string `bson:"Video"`
 }
 
@@ -79,7 +76,7 @@ type SelfieCamera struct {
 
 type Sound struct {
 	Loudspeaker string `bson:"Loudspeaker"`
-	Jack35mm    string `bson:"Jack35Mm"`
+	Jack35mm    string `bson:"3.5mm jack"`
 }
 
 type Comms struct {
@@ -93,7 +90,6 @@ type Comms struct {
 
 type Features struct {
 	Sensors string `bson:"Sensors"`
-	Other   string `bson:"Other"`
 }
 
 type Battery struct {

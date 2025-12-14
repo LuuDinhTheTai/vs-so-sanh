@@ -2,15 +2,15 @@ package page
 
 import (
 	"strings"
+	"vs-so-sanh/internal/device/delivery/dto"
 
-	model "vs-so-sanh/internal/model"
 	"vs-so-sanh/web/page/shared"
 
 	. "maragu.dev/gomponents"
 	. "maragu.dev/gomponents/html"
 )
 
-func DetailsPage(device *model.Device) Node {
+func DetailsPage(device *dto.DeviceResponse) Node {
 	specs := device.Specifications
 
 	return shared.Page(device.ModelName,

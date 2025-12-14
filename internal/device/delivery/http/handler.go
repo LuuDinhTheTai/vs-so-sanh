@@ -29,10 +29,10 @@ func (p *DeviceHandler) HomePage(ctx *gin.Context) {
 
 func (p *DeviceHandler) Details(ctx *gin.Context) {
 	deviceName := ctx.Param("modelName")
-	phone, err := p.deviceUseCase.FindByName(deviceName)
+	deviceResponse, err := p.deviceUseCase.FindByName(ctx, deviceName)
 	if err != nil {
-		slog.Error("(handler) details: ", err)
+		slog.Error("(handler) details: \n", err)
 		return
 	}
-	response.HTML(ctx, page.DetailsPage(phone))
+	response.HTML(ctx, page.DetailsPage(deviceResponse))
 }

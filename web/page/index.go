@@ -133,7 +133,7 @@ func HotDeviceSection(devices []model.Device) Node {
 		Div(Class("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"), // Tăng gap
 			Maps(devices, func(n model.Device) Node {
 				// Card sản phẩm phẳng
-				return A(Href("/details"), Class("group block border border-gray-200 p-4 hover:border-indigo-600 transition-colors bg-white"), // Hover đổi màu border thay vì nổi lên
+				return A(Href("/devices/"+n.ModelName), Class("group block border border-gray-200 p-4 hover:border-indigo-600 transition-colors bg-white"), // Hover đổi màu border thay vì nổi lên
 					Div(Class("h-40 bg-white mb-4 flex items-center justify-center p-2"), // Nền trắng thay vì xám
 						Img(
 							Class("max-h-full max-w-full object-contain"),
