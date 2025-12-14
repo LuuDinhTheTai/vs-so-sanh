@@ -24,7 +24,19 @@ func NewDeviceHandler(useCase device.UseCase, brandUseCase brand.UseCase) device
 }
 
 func (p *DeviceHandler) HomePage(ctx *gin.Context) {
-	response.HTML(ctx, page.HomePage(p.brandUseCase, p.deviceUseCase))
+	top20Brands, err := p.brandUseCase.FindTop20()
+	if err != nil {
+		slog.Error("Error fetching top 10 brands: ", err)
+		return
+	}
+
+	top20Devices, err := p.deviceUseCase.FindTop20()
+	if err != nil {
+		slog.Error("Error fetching top 10 devices: ", err)
+		return
+	}
+
+	response.HTML(ctx, page.HomePage(top20Brands, top20Devices))
 }
 
 func (p *DeviceHandler) Details(ctx *gin.Context) {
