@@ -3,8 +3,9 @@ package dto
 import "vs-so-sanh/internal/model"
 
 func From(device *model.Device) *DeviceResponse {
-	return &DeviceResponse{ModelName: device.ModelName,
-		ImageUrl: device.ImageUrl,
+	return &DeviceResponse{
+		ModelName: device.ModelName,
+		ImageUrl:  device.ImageUrl,
 		Specifications: SpecificationsResponse{
 			Network: NetworkResponse{
 				Technology: device.Specifications.Network.Technology,
@@ -74,6 +75,85 @@ func From(device *model.Device) *DeviceResponse {
 			},
 		},
 	}
+}
+
+var EmptyDeviceResponse = &DeviceResponse{
+	ModelName: "Unknown Device",
+	ImageUrl:  "",
+	Specifications: SpecificationsResponse{
+		Network: NetworkResponse{
+			Technology: "",
+			Bands2G:    "",
+			Bands3G:    "",
+			Bands4G:    "",
+			Bands5G:    "",
+			Speed:      "",
+		},
+		Launch: LaunchResponse{
+			Announced: "",
+			Status:    "",
+		},
+		Body: BodyResponse{
+			DimensionsUnfolded: "",
+			DimensionsFolded:   "",
+			Weight:             "",
+			Build:              "",
+			SIM:                "",
+			IPRating:           "",
+		},
+		Display: DisplayResponse{
+			MainType:        "",
+			MainSize:        "",
+			MainResolution:  "",
+			CoverType:       "",
+			CoverSize:       "",
+			CoverResolution: "",
+		},
+		Platform: PlatformResponse{
+			OS:      "",
+			Chipset: "",
+			CPU:     "",
+			GPU:     "",
+		},
+		Memory: MemoryResponse{
+			CardSlot: "",
+			Internal: "",
+		},
+		MainCamera: MainCameraResponse{
+			Single:   "",
+			Features: "",
+			Video:    "",
+		},
+		SelfieCamera: SelfieCameraResponse{
+			Single: "",
+			Video:  "",
+		},
+		Sound: SoundResponse{
+			Loudspeaker: "",
+			Jack35mm:    "",
+		},
+		Comms: CommsResponse{
+			WLAN:        "",
+			Bluetooth:   "",
+			Positioning: "",
+			NFC:         "",
+			Radio:       "",
+			USB:         "",
+		},
+		Features: FeaturesResponse{
+			Sensors: "",
+			Other:   "",
+		},
+		Battery: BatteryResponse{
+			Type:     "",
+			Charging: "",
+		},
+		Misc: MiscResponse{
+			Colors: "",
+			Models: "",
+			Price:  "",
+		},
+	},
 }
 
 type DeviceResponse struct {

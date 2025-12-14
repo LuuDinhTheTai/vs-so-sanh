@@ -26,5 +26,9 @@ func (p *DeviceUseCase) FindByName(c context.Context, deviceName string) (*dto.D
 		return nil, fmt.Errorf("(usecase) FindByName: %w", err)
 	}
 
+	if devices == nil {
+		return dto.EmptyDeviceResponse, nil
+	}
+
 	return dto.From(devices), nil
 }

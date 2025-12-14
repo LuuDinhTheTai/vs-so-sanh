@@ -7,4 +7,5 @@ import (
 type Handler interface {
 	HomePage(ctx *gin.Context)
 	Details(ctx *gin.Context)
+	Compare(ctx *gin.Context)
 }

@@ -48,3 +48,20 @@ func (p *DeviceHandler) Details(ctx *gin.Context) {
 	}
 	response.HTML(ctx, page.DetailsPage(deviceResponse))
 }
+
+func (p *DeviceHandler) Compare(ctx *gin.Context) {
+	device1Name := ctx.Param("device1")
+	device2Name := ctx.Param("device2")
+
+	device1, err := p.deviceUseCase.FindByName(ctx, device1Name)
+	if err != nil {
+		slog.Error("(handler) compare: \n", err)
+	}
+
+	device2, err := p.deviceUseCase.FindByName(ctx, device2Name)
+	if err != nil {
+		slog.Error("(handler) compare: \n", err)
+	}
+
+	response.HTML(ctx, page.ComparePage(device1, device2))
+}
