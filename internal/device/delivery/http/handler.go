@@ -47,7 +47,14 @@ func (p *DeviceHandler) Details(ctx *gin.Context) {
 		slog.Error("(handler) details: \n", err)
 		return
 	}
-	response.HTML(ctx, page.DetailsPage(deviceResponse))
+
+	top20Brands, err := p.brandUseCase.FindTop20()
+	if err != nil {
+		slog.Error("Error fetching top 10 brands: ", err)
+		return
+	}
+
+	response.HTML(ctx, page.DetailsPage(deviceResponse, top20Brands))
 }
 
 func (p *DeviceHandler) Compare(ctx *gin.Context) {
@@ -66,5 +73,11 @@ func (p *DeviceHandler) Compare(ctx *gin.Context) {
 		device2 = dto.EmptyDeviceResponse
 	}
 
-	response.HTML(ctx, page.ComparePage(device1, device2))
+	top20Brands, err := p.brandUseCase.FindTop20()
+	if err != nil {
+		slog.Error("Error fetching top 10 brands: ", err)
+		return
+	}
+
+	response.HTML(ctx, page.ComparePage(device1, device2, top20Brands))
 }
